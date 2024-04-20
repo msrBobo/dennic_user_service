@@ -70,7 +70,7 @@ func (u userService) Update(ctx context.Context, articleCategory *entity.User) e
 	ctx, span := otlp.Start(ctx, serviceName, spanName+"Update")
 	defer span.End()
 
-	u.BeforeUpdRequest(&articleCategory.UpdatedAt)
+	u.BeforeUpdateRequest(&articleCategory.UpdatedAt)
 
 	return u.repo.Update(ctx, articleCategory)
 }

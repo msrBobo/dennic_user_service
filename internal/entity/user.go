@@ -1,5 +1,7 @@
 package entity
 
+import "time"
+
 type User struct {
 	Id           string
 	UserOrder    uint64
@@ -10,8 +12,8 @@ type User struct {
 	Password     string
 	Gender       string
 	RefreshToken string
-	CreatedAt    string
-	UpdatedAt    string
+	CreatedAt    time.Time
+	UpdatedAt    time.Time
 }
 
 type CheckFieldReq struct {

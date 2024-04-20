@@ -2,6 +2,7 @@ package postgresql
 
 import (
 	"context"
+	"database/sql"
 	"dennic_user_service/internal/entity"
 	"dennic_user_service/internal/pkg/otlp"
 	"dennic_user_service/internal/pkg/postgres"
@@ -40,6 +41,7 @@ func (p *userRepo) userSelectQueryPrefix() squirrel.SelectBuilder {
 			"password",
 			"gender",
 			"created_at",
+			"updated_at",
 		).From(p.tableName)
 }
 
@@ -91,18 +93,31 @@ func (p userRepo) Get(ctx context.Context, params map[string]string) (*entity.Us
 	if err != nil {
 		return nil, p.db.ErrSQLBuild(err, fmt.Sprintf("%s %s", p.tableName, "get"))
 	}
+
+	var (
+		birthDate sql.NullTime
+		updatedAt sql.NullTime
+	)
 	if err = p.db.QueryRow(ctx, query, args...).Scan(
 		&user.Id,
 		&user.UserOrder,
 		&user.FirstName,
 		&user.LastName,
-		&user.BirthDate,
+		&birthDate,
 		&user.PhoneNumber,
 		&user.Password,
 		&user.Gender,
 		&user.CreatedAt,
+		&updatedAt,
 	); err != nil {
 		return nil, p.db.Error(err)
+	}
+
+	if birthDate.Valid {
+		user.BirthDate = birthDate.Time.String()
+	}
+	if updatedAt.Valid {
+		user.UpdatedAt = updatedAt.Time
 	}
 
 	return &user, nil
@@ -142,7 +157,11 @@ func (p userRepo) List(ctx context.Context, limit, offset uint64, filter map[str
 		return nil, p.db.Error(err)
 	}
 	defer rows.Close()
-	users = make([]*entity.User, 0)
+
+	var (
+		birthDate sql.NullTime
+		updatedAt sql.NullTime
+	)
 	for rows.Next() {
 		var user entity.User
 		if err = rows.Scan(
@@ -150,15 +169,22 @@ func (p userRepo) List(ctx context.Context, limit, offset uint64, filter map[str
 			&user.UserOrder,
 			&user.FirstName,
 			&user.LastName,
-			&user.BirthDate,
+			&birthDate,
 			&user.PhoneNumber,
 			&user.Password,
 			&user.Gender,
 			&user.CreatedAt,
+			&updatedAt,
 		); err != nil {
 			return nil, p.db.Error(err)
 		}
 
+		if birthDate.Valid {
+			user.BirthDate = birthDate.Time.String()
+		}
+		if updatedAt.Valid {
+			user.UpdatedAt = updatedAt.Time
+		}
 		users = append(users, &user)
 	}
 

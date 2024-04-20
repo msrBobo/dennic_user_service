@@ -17,20 +17,19 @@ func (u *BaseUseCase) Error(msg string, err error) error {
 	return err
 }
 
-func (u *BaseUseCase) BeforeUpdRequest(updatedAt *string) {
+func (u *BaseUseCase) BeforeUpdateRequest(updatedAt *time.Time) {
 
-	if *updatedAt != "" {
-		*updatedAt = time.Now().UTC().String()
+	if updatedAt != nil {
+		*updatedAt = time.Now().UTC()
 	}
 }
 
-func (u *BaseUseCase) BeforeCreateRequest(guid *string, createdAt *string) {
-	if guid != nil {
-		*guid = uuid.New().String()
+func (u *BaseUseCase) BeforeCreateRequest(id *string, createdAt *time.Time) {
+	if id != nil {
+		*id = uuid.New().String()
 	}
 
 	if createdAt != nil {
-		*createdAt = time.Now().UTC().Format("2006-01-02 15:04:05")
+		*createdAt = time.Now().UTC()
 	}
 }
-

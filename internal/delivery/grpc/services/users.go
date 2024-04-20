@@ -6,6 +6,7 @@ import (
 	"dennic_user_service/internal/entity"
 	"dennic_user_service/internal/usecase"
 	"dennic_user_service/internal/usecase/event"
+	"time"
 
 	"go.uber.org/zap"
 	"google.golang.org/protobuf/types/known/emptypb"
@@ -38,8 +39,7 @@ func (u userRPC) CreateUser(ctx context.Context, user *pb.User) (*pb.User, error
 		Password:     user.Password,
 		Gender:       user.Gender,
 		RefreshToken: user.RefreshToken,
-		CreatedAt:    user.CreatedAt,
-		UpdatedAt:    user.UpdatedAt,
+		CreatedAt:    time.Now(),
 	}
 	_, err := u.user.Create(ctx, &req)
 	if err != nil {
@@ -58,7 +58,6 @@ func (u userRPC) CreateUser(ctx context.Context, user *pb.User) (*pb.User, error
 		Gender:       user.Gender,
 		RefreshToken: user.RefreshToken,
 		CreatedAt:    user.CreatedAt,
-		UpdatedAt:    user.UpdatedAt,
 	}, nil
 }
 
@@ -84,8 +83,7 @@ func (u userRPC) GetUserById(ctx context.Context, id *pb.GetUserReqById) (*pb.Us
 		Password:     resp.Password,
 		Gender:       resp.Gender,
 		RefreshToken: resp.RefreshToken,
-		CreatedAt:    resp.CreatedAt,
-		UpdatedAt:    resp.UpdatedAt,
+		CreatedAt:    resp.CreatedAt.String(),
 	}, nil
 }
 
@@ -111,8 +109,7 @@ func (u userRPC) GetAllUsers(ctx context.Context, req *pb.ListUsersReq) (*pb.Lis
 			Password:     in.Password,
 			Gender:       in.Gender,
 			RefreshToken: in.RefreshToken,
-			CreatedAt:    in.CreatedAt,
-			UpdatedAt:    in.UpdatedAt,
+			CreatedAt:    in.CreatedAt.String(),
 		})
 	}
 
@@ -131,8 +128,6 @@ func (u userRPC) UpdateUser(ctx context.Context, user *pb.User) (*pb.User, error
 		Password:     user.Password,
 		Gender:       user.Gender,
 		RefreshToken: user.RefreshToken,
-		CreatedAt:    user.CreatedAt,
-		UpdatedAt:    user.UpdatedAt,
 	}
 
 	err := u.user.Update(ctx, &req)
@@ -152,8 +147,8 @@ func (u userRPC) UpdateUser(ctx context.Context, user *pb.User) (*pb.User, error
 		Password:     req.Password,
 		Gender:       req.Gender,
 		RefreshToken: req.RefreshToken,
-		CreatedAt:    req.CreatedAt,
-		UpdatedAt:    req.UpdatedAt,
+		CreatedAt:    req.CreatedAt.String(),
+		UpdatedAt:    req.UpdatedAt.String(),
 	}, nil
 }
 
@@ -244,3 +239,5 @@ func (u userRPC) UpdateRefreshToken(ctx context.Context, id *pb.UpdateRefreshTok
 
 	return resp, nil
 }
+
+
