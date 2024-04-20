@@ -1,0 +1,90 @@
+syntax = "proto3";
+
+package user;
+
+import "google/protobuf/empty.proto";
+
+service UserService {
+  rpc CreateUser(User) returns (User);
+  rpc UpdateUser(User) returns (User);
+  rpc GetUserById(GetUserReqById) returns (User);
+  rpc GetAllUsers(ListUsersReq) returns (ListUsersResp);
+  rpc DeleteUser(DeleteUserReq) returns (google.protobuf.Empty);
+  rpc CheckField(CheckFieldReq) returns (CheckFieldResp);
+  rpc IfExists(IfExistsReq) returns (IfExistsResp);
+  rpc ChangePassword(ChangeUserPasswordReq) returns (ChangeUserPasswordResp);
+  rpc UpdateRefreshToken(UpdateRefreshTokenReq) returns (UpdateRefreshTokenResp);
+}
+
+message User {
+  string id = 1;
+  uint64 user_order = 2;
+  string first_name = 3;
+  string last_name = 4;
+  string birth_date = 5;
+  string phone_number = 6;
+  string password = 7;
+  string gender = 8;
+  string refresh_token = 9;
+  string created_at = 10;
+  string updated_at = 11;
+  string deleted_at = 12;
+}
+
+message CheckFieldReq {
+  string value = 1;
+  string field = 2;
+}
+
+message CheckFieldResp {
+  bool status = 1;
+}
+
+message GetUserReqById {
+  string user_id = 1;
+}
+
+message ChangeUserPasswordReq {
+  string phone_number = 1; 
+  string password = 2;
+}
+
+message ChangeUserPasswordResp {
+  bool status = 1;
+}
+
+message DeleteUserReq {
+  string user_id = 1;
+}
+
+message ListUsersReq {
+    uint64 limit = 1;
+    uint64 offset = 2;
+    map<string, string> filter=3;
+}
+
+message ListUsersResp {
+  repeated User users = 1;
+  uint64 count = 2;
+}
+
+message IfExistsReq {
+  string phone_number = 1;
+}
+
+message IfExistsResp {
+  bool is_exists = 1;
+}
+
+message Empty {
+  
+}
+
+message UpdateRefreshTokenReq {
+  string user_id = 1;
+  string refresh_token = 2;
+}
+
+message UpdateRefreshTokenResp {
+  bool status = 1;
+}
