@@ -239,5 +239,3 @@ func (u userRPC) UpdateRefreshToken(ctx context.Context, id *pb.UpdateRefreshTok
 
 	return resp, nil
 }
-
-
