@@ -32,6 +32,7 @@ type App struct {
 	ShutdownOTLP   func() error
 	ServiceClients grpc_service_clients.ServiceClients
 	BrokerProducer event.BrokerProducer
+	BrokerConsumer event.BrokerConsumer
 }
 
 func NewApp(cfg *config.Config) (*App, error) {
@@ -42,6 +43,7 @@ func NewApp(cfg *config.Config) (*App, error) {
 	}
 
 	kafkaProducer := kafka.NewProducer(cfg, logger)
+	kafkaConsumer := kafka.NewConsumer(logger)
 
 	// otlp collector initialization
 	shutdownOTLP, err := otlp.InitOTLPProvider(cfg)
@@ -54,7 +56,10 @@ func NewApp(cfg *config.Config) (*App, error) {
 	if err != nil {
 		return nil, err
 	}
-
+	consumerApp, err := NewUserCreateConsumerCLI(cfg, logger, db, kafkaConsumer)
+	if err != nil {
+		return nil, err
+	}
 	// grpc server init
 	grpcServer := grpc.NewServer(
 		grpc.StreamInterceptor(grpc_middleware.ChainStreamServer(
@@ -79,6 +84,7 @@ func NewApp(cfg *config.Config) (*App, error) {
 		GrpcServer:     grpcServer,
 		ShutdownOTLP:   shutdownOTLP,
 		BrokerProducer: kafkaProducer,
+		BrokerConsumer: consumerApp.BrokerConsumer,
 	}, nil
 }
 

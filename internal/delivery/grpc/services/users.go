@@ -27,11 +27,10 @@ func NewRPC(logger *zap.Logger, user usecase.UserStorageI,
 	}
 }
 
-func (u userRPC) CreateUser(ctx context.Context, user *pb.User) (*pb.User, error) {
+func (u userRPC) Create(ctx context.Context, user *pb.User) (*pb.User, error) {
 
 	req := entity.User{
 		Id:           user.Id,
-		UserOrder:    user.UserOrder,
 		FirstName:    user.FirstName,
 		LastName:     user.LastName,
 		BirthDate:    user.BirthDate,
@@ -41,27 +40,35 @@ func (u userRPC) CreateUser(ctx context.Context, user *pb.User) (*pb.User, error
 		RefreshToken: user.RefreshToken,
 		CreatedAt:    time.Now(),
 	}
-	_, err := u.user.Create(ctx, &req)
+	UserId, err := u.user.Create(ctx, &req)
+	if err != nil {
+		u.logger.Error("Create user error", zap.Error(err))
+		return nil, err
+	}
+
+	Params := make(map[string]string)
+	Params["id"] = UserId
+	resp, err := u.user.Get(ctx, Params)
 	if err != nil {
 		u.logger.Error("Create user error", zap.Error(err))
 		return nil, err
 	}
 
 	return &pb.User{
-		Id:           user.Id,
-		UserOrder:    user.UserOrder,
-		FirstName:    user.FirstName,
-		LastName:     user.LastName,
-		BirthDate:    user.BirthDate,
-		PhoneNumber:  user.PhoneNumber,
-		Password:     user.Password,
-		Gender:       user.Gender,
-		RefreshToken: user.RefreshToken,
-		CreatedAt:    user.CreatedAt,
+		Id:           resp.Id,
+		UserOrder:    resp.UserOrder,
+		FirstName:    resp.FirstName,
+		LastName:     resp.LastName,
+		BirthDate:    resp.BirthDate,
+		PhoneNumber:  resp.PhoneNumber,
+		Password:     resp.Password,
+		Gender:       resp.Gender,
+		RefreshToken: resp.RefreshToken,
+		CreatedAt:    resp.CreatedAt.String(),
 	}, nil
 }
 
-func (u userRPC) GetUserById(ctx context.Context, id *pb.GetUserReqById) (*pb.User, error) {
+func (u userRPC) Get(ctx context.Context, id *pb.GetUserReqById) (*pb.User, error) {
 
 	reqMap := make(map[string]string)
 	reqMap["id"] = id.UserId
@@ -84,10 +91,11 @@ func (u userRPC) GetUserById(ctx context.Context, id *pb.GetUserReqById) (*pb.Us
 		Gender:       resp.Gender,
 		RefreshToken: resp.RefreshToken,
 		CreatedAt:    resp.CreatedAt.String(),
+		UpdatedAt:    resp.UpdatedAt.String(),
 	}, nil
 }
 
-func (u userRPC) GetAllUsers(ctx context.Context, req *pb.ListUsersReq) (*pb.ListUsersResp, error) {
+func (u userRPC) ListUsers(ctx context.Context, req *pb.ListUsersReq) (*pb.ListUsersResp, error) {
 
 	resp, err := u.user.List(ctx, req.Limit, req.Offset, req.Filter)
 
@@ -110,13 +118,14 @@ func (u userRPC) GetAllUsers(ctx context.Context, req *pb.ListUsersReq) (*pb.Lis
 			Gender:       in.Gender,
 			RefreshToken: in.RefreshToken,
 			CreatedAt:    in.CreatedAt.String(),
+			UpdatedAt:    in.UpdatedAt.String(),
 		})
 	}
 
 	return &users, nil
 }
 
-func (u userRPC) UpdateUser(ctx context.Context, user *pb.User) (*pb.User, error) {
+func (u userRPC) Update(ctx context.Context, user *pb.User) (*pb.User, error) {
 
 	req := entity.User{
 		Id:           user.Id,
@@ -152,7 +161,7 @@ func (u userRPC) UpdateUser(ctx context.Context, user *pb.User) (*pb.User, error
 	}, nil
 }
 
-func (u userRPC) DeleteUser(ctx context.Context, id *pb.DeleteUserReq) (resp *emptypb.Empty, err error) {
+func (u userRPC) Delete(ctx context.Context, id *pb.DeleteUserReq) (resp *emptypb.Empty, err error) {
 
 	reqMap := make(map[string]string)
 	reqMap["id"] = id.UserId
@@ -166,7 +175,7 @@ func (u userRPC) DeleteUser(ctx context.Context, id *pb.DeleteUserReq) (resp *em
 	return resp, nil
 }
 
-func (u userRPC) CheckField(ctx context.Context, req *pb.CheckFieldReq) (*pb.CheckFieldResp, error) {
+func (u userRPC) CheckField(ctx context.Context, req *pb.CheckFieldUserReq) (*pb.CheckFieldUserResp, error) {
 
 	reqUser := entity.CheckFieldReq{
 		Value: req.Value,
@@ -178,13 +187,14 @@ func (u userRPC) CheckField(ctx context.Context, req *pb.CheckFieldReq) (*pb.Che
 		u.logger.Error("delete user error", zap.Error(err))
 		return nil, err
 	}
-	response := &pb.CheckFieldResp{
+	response := &pb.CheckFieldUserResp{
 		Status: resp.Status,
 	}
+
 	return response, nil
 }
 
-func (u userRPC) IfExists(ctx context.Context, phone *pb.IfExistsReq) (resp *pb.IfExistsResp, err error) {
+func (u userRPC) IfExists(ctx context.Context, phone *pb.IfUserExistsReq) (resp *pb.IfUserExistsResp, err error) {
 
 	req := entity.IfExistsReq{
 		PhoneNumber: phone.PhoneNumber,
@@ -197,7 +207,7 @@ func (u userRPC) IfExists(ctx context.Context, phone *pb.IfExistsReq) (resp *pb.
 		return nil, err
 	}
 
-	resp = &pb.IfExistsResp{
+	resp = &pb.IfUserExistsResp{
 		IsExists: entityResp.IsExistsReq,
 	}
 
@@ -222,9 +232,9 @@ func (u userRPC) ChangePassword(ctx context.Context, phone *pb.ChangeUserPasswor
 	return resp, nil
 }
 
-func (u userRPC) UpdateRefreshToken(ctx context.Context, id *pb.UpdateRefreshTokenReq) (resp *pb.UpdateRefreshTokenResp, err error) {
+func (u userRPC) UpdateRefreshToken(ctx context.Context, id *pb.UpdateRefreshTokenUserReq) (resp *pb.UpdateRefreshTokenUserResp, err error) {
 	req := entity.UpdateRefreshTokenReq{
-		UserId:       id.UserId,
+		Id:           id.Id,
 		RefreshToken: id.RefreshToken,
 	}
 	status, err := u.user.UpdateRefreshToken(ctx, &req)
@@ -233,7 +243,7 @@ func (u userRPC) UpdateRefreshToken(ctx context.Context, id *pb.UpdateRefreshTok
 		return nil, err
 	}
 
-	resp = &pb.UpdateRefreshTokenResp{
+	resp = &pb.UpdateRefreshTokenUserResp{
 		Status: status.Status,
 	}
 

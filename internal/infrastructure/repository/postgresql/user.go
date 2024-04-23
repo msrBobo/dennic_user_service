@@ -50,7 +50,6 @@ func (p userRepo) Create(ctx context.Context, user *entity.User) error {
 	defer span.End()
 	data := map[string]any{
 		"id":            user.Id,
-		"user_order":    user.UserOrder,
 		"first_name":    user.FirstName,
 		"last_name":     user.LastName,
 		"birth_date":    user.BirthDate,
@@ -95,7 +94,7 @@ func (p userRepo) Get(ctx context.Context, params map[string]string) (*entity.Us
 	}
 
 	var (
-		birthDate sql.NullTime
+		birthDate sql.NullString
 		updatedAt sql.NullTime
 	)
 	if err = p.db.QueryRow(ctx, query, args...).Scan(
@@ -114,7 +113,7 @@ func (p userRepo) Get(ctx context.Context, params map[string]string) (*entity.Us
 	}
 
 	if birthDate.Valid {
-		user.BirthDate = birthDate.Time.String()
+		user.BirthDate = birthDate.String
 	}
 	if updatedAt.Valid {
 		user.UpdatedAt = updatedAt.Time
@@ -283,22 +282,22 @@ func (p *userRepo) IfExists(ctx context.Context, req *entity.IfExistsReq) (resp 
 	return resp, nil
 }
 
-func (p *userRepo) ChangePassword(ctx context.Context, req *entity.ChangeUserPasswordReq) (*entity.ChangeUserPasswordResp, error) {
+func (p *userRepo) ChangePassword(ctx context.Context, req *entity.ChangeUserPasswordReq) (*entity.ChangePasswordResp, error) {
 	query := `UPDATE users SET password = $1 WHERE phone_number = $2 AND deleted_at IS NULL`
 	resp, err := p.db.Exec(ctx, query, req.Password, req.PhoneNumber)
 	if err != nil {
 		return nil, err
 	}
 	if resp.RowsAffected() == 0 {
-		return &entity.ChangeUserPasswordResp{Status: false}, nil
+		return &entity.ChangePasswordResp{Status: false}, nil
 	}
-	return &entity.ChangeUserPasswordResp{Status: true}, nil
+	return &entity.ChangePasswordResp{Status: true}, nil
 }
 
 func (p *userRepo) UpdateRefreshToken(ctx context.Context, req *entity.UpdateRefreshTokenReq) (*entity.UpdateRefreshTokenResp, error) {
 	query := `UPDATE users SET refresh_token = $1 WHERE id = $2 AND deleted_at IS NULL`
 
-	resp, err := p.db.Exec(ctx, query, req.RefreshToken, req.UserId)
+	resp, err := p.db.Exec(ctx, query, req.RefreshToken, req.Id)
 	if err != nil {
 		return nil, err
 	}

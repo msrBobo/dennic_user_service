@@ -162,7 +162,7 @@ func (m *User) GetDeletedAt() string {
 	return ""
 }
 
-type CheckFieldReq struct {
+type CheckFieldUserReq struct {
 	Value                string   `protobuf:"bytes,1,opt,name=value,proto3" json:"value"`
 	Field                string   `protobuf:"bytes,2,opt,name=field,proto3" json:"field"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
@@ -170,18 +170,18 @@ type CheckFieldReq struct {
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CheckFieldReq) Reset()         { *m = CheckFieldReq{} }
-func (m *CheckFieldReq) String() string { return proto.CompactTextString(m) }
-func (*CheckFieldReq) ProtoMessage()    {}
-func (*CheckFieldReq) Descriptor() ([]byte, []int) {
+func (m *CheckFieldUserReq) Reset()         { *m = CheckFieldUserReq{} }
+func (m *CheckFieldUserReq) String() string { return proto.CompactTextString(m) }
+func (*CheckFieldUserReq) ProtoMessage()    {}
+func (*CheckFieldUserReq) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5fe9d1857265efb6, []int{1}
 }
-func (m *CheckFieldReq) XXX_Unmarshal(b []byte) error {
+func (m *CheckFieldUserReq) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *CheckFieldReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *CheckFieldUserReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_CheckFieldReq.Marshal(b, m, deterministic)
+		return xxx_messageInfo_CheckFieldUserReq.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -191,51 +191,51 @@ func (m *CheckFieldReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error
 		return b[:n], nil
 	}
 }
-func (m *CheckFieldReq) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CheckFieldReq.Merge(m, src)
+func (m *CheckFieldUserReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CheckFieldUserReq.Merge(m, src)
 }
-func (m *CheckFieldReq) XXX_Size() int {
+func (m *CheckFieldUserReq) XXX_Size() int {
 	return m.Size()
 }
-func (m *CheckFieldReq) XXX_DiscardUnknown() {
-	xxx_messageInfo_CheckFieldReq.DiscardUnknown(m)
+func (m *CheckFieldUserReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_CheckFieldUserReq.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CheckFieldReq proto.InternalMessageInfo
+var xxx_messageInfo_CheckFieldUserReq proto.InternalMessageInfo
 
-func (m *CheckFieldReq) GetValue() string {
+func (m *CheckFieldUserReq) GetValue() string {
 	if m != nil {
 		return m.Value
 	}
 	return ""
 }
 
-func (m *CheckFieldReq) GetField() string {
+func (m *CheckFieldUserReq) GetField() string {
 	if m != nil {
 		return m.Field
 	}
 	return ""
 }
 
-type CheckFieldResp struct {
+type CheckFieldUserResp struct {
 	Status               bool     `protobuf:"varint,1,opt,name=status,proto3" json:"status"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *CheckFieldResp) Reset()         { *m = CheckFieldResp{} }
-func (m *CheckFieldResp) String() string { return proto.CompactTextString(m) }
-func (*CheckFieldResp) ProtoMessage()    {}
-func (*CheckFieldResp) Descriptor() ([]byte, []int) {
+func (m *CheckFieldUserResp) Reset()         { *m = CheckFieldUserResp{} }
+func (m *CheckFieldUserResp) String() string { return proto.CompactTextString(m) }
+func (*CheckFieldUserResp) ProtoMessage()    {}
+func (*CheckFieldUserResp) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5fe9d1857265efb6, []int{2}
 }
-func (m *CheckFieldResp) XXX_Unmarshal(b []byte) error {
+func (m *CheckFieldUserResp) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *CheckFieldResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *CheckFieldUserResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_CheckFieldResp.Marshal(b, m, deterministic)
+		return xxx_messageInfo_CheckFieldUserResp.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -245,19 +245,19 @@ func (m *CheckFieldResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, erro
 		return b[:n], nil
 	}
 }
-func (m *CheckFieldResp) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_CheckFieldResp.Merge(m, src)
+func (m *CheckFieldUserResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_CheckFieldUserResp.Merge(m, src)
 }
-func (m *CheckFieldResp) XXX_Size() int {
+func (m *CheckFieldUserResp) XXX_Size() int {
 	return m.Size()
 }
-func (m *CheckFieldResp) XXX_DiscardUnknown() {
-	xxx_messageInfo_CheckFieldResp.DiscardUnknown(m)
+func (m *CheckFieldUserResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_CheckFieldUserResp.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_CheckFieldResp proto.InternalMessageInfo
+var xxx_messageInfo_CheckFieldUserResp proto.InternalMessageInfo
 
-func (m *CheckFieldResp) GetStatus() bool {
+func (m *CheckFieldUserResp) GetStatus() bool {
 	if m != nil {
 		return m.Status
 	}
@@ -578,25 +578,25 @@ func (m *ListUsersResp) GetCount() uint64 {
 	return 0
 }
 
-type IfExistsReq struct {
+type IfUserExistsReq struct {
 	PhoneNumber          string   `protobuf:"bytes,1,opt,name=phone_number,json=phoneNumber,proto3" json:"phone_number"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *IfExistsReq) Reset()         { *m = IfExistsReq{} }
-func (m *IfExistsReq) String() string { return proto.CompactTextString(m) }
-func (*IfExistsReq) ProtoMessage()    {}
-func (*IfExistsReq) Descriptor() ([]byte, []int) {
+func (m *IfUserExistsReq) Reset()         { *m = IfUserExistsReq{} }
+func (m *IfUserExistsReq) String() string { return proto.CompactTextString(m) }
+func (*IfUserExistsReq) ProtoMessage()    {}
+func (*IfUserExistsReq) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5fe9d1857265efb6, []int{9}
 }
-func (m *IfExistsReq) XXX_Unmarshal(b []byte) error {
+func (m *IfUserExistsReq) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *IfExistsReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *IfUserExistsReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_IfExistsReq.Marshal(b, m, deterministic)
+		return xxx_messageInfo_IfUserExistsReq.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -606,44 +606,44 @@ func (m *IfExistsReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) 
 		return b[:n], nil
 	}
 }
-func (m *IfExistsReq) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_IfExistsReq.Merge(m, src)
+func (m *IfUserExistsReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IfUserExistsReq.Merge(m, src)
 }
-func (m *IfExistsReq) XXX_Size() int {
+func (m *IfUserExistsReq) XXX_Size() int {
 	return m.Size()
 }
-func (m *IfExistsReq) XXX_DiscardUnknown() {
-	xxx_messageInfo_IfExistsReq.DiscardUnknown(m)
+func (m *IfUserExistsReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_IfUserExistsReq.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_IfExistsReq proto.InternalMessageInfo
+var xxx_messageInfo_IfUserExistsReq proto.InternalMessageInfo
 
-func (m *IfExistsReq) GetPhoneNumber() string {
+func (m *IfUserExistsReq) GetPhoneNumber() string {
 	if m != nil {
 		return m.PhoneNumber
 	}
 	return ""
 }
 
-type IfExistsResp struct {
+type IfUserExistsResp struct {
 	IsExists             bool     `protobuf:"varint,1,opt,name=is_exists,json=isExists,proto3" json:"is_exists"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *IfExistsResp) Reset()         { *m = IfExistsResp{} }
-func (m *IfExistsResp) String() string { return proto.CompactTextString(m) }
-func (*IfExistsResp) ProtoMessage()    {}
-func (*IfExistsResp) Descriptor() ([]byte, []int) {
+func (m *IfUserExistsResp) Reset()         { *m = IfUserExistsResp{} }
+func (m *IfUserExistsResp) String() string { return proto.CompactTextString(m) }
+func (*IfUserExistsResp) ProtoMessage()    {}
+func (*IfUserExistsResp) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5fe9d1857265efb6, []int{10}
 }
-func (m *IfExistsResp) XXX_Unmarshal(b []byte) error {
+func (m *IfUserExistsResp) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *IfExistsResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *IfUserExistsResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_IfExistsResp.Marshal(b, m, deterministic)
+		return xxx_messageInfo_IfUserExistsResp.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -653,19 +653,19 @@ func (m *IfExistsResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error)
 		return b[:n], nil
 	}
 }
-func (m *IfExistsResp) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_IfExistsResp.Merge(m, src)
+func (m *IfUserExistsResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_IfUserExistsResp.Merge(m, src)
 }
-func (m *IfExistsResp) XXX_Size() int {
+func (m *IfUserExistsResp) XXX_Size() int {
 	return m.Size()
 }
-func (m *IfExistsResp) XXX_DiscardUnknown() {
-	xxx_messageInfo_IfExistsResp.DiscardUnknown(m)
+func (m *IfUserExistsResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_IfUserExistsResp.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_IfExistsResp proto.InternalMessageInfo
+var xxx_messageInfo_IfUserExistsResp proto.InternalMessageInfo
 
-func (m *IfExistsResp) GetIsExists() bool {
+func (m *IfUserExistsResp) GetIsExists() bool {
 	if m != nil {
 		return m.IsExists
 	}
@@ -711,26 +711,26 @@ func (m *Empty) XXX_DiscardUnknown() {
 
 var xxx_messageInfo_Empty proto.InternalMessageInfo
 
-type UpdateRefreshTokenReq struct {
-	UserId               string   `protobuf:"bytes,1,opt,name=user_id,json=userId,proto3" json:"user_id"`
+type UpdateRefreshTokenUserReq struct {
+	Id                   string   `protobuf:"bytes,1,opt,name=id,proto3" json:"id"`
 	RefreshToken         string   `protobuf:"bytes,2,opt,name=refresh_token,json=refreshToken,proto3" json:"refresh_token"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *UpdateRefreshTokenReq) Reset()         { *m = UpdateRefreshTokenReq{} }
-func (m *UpdateRefreshTokenReq) String() string { return proto.CompactTextString(m) }
-func (*UpdateRefreshTokenReq) ProtoMessage()    {}
-func (*UpdateRefreshTokenReq) Descriptor() ([]byte, []int) {
+func (m *UpdateRefreshTokenUserReq) Reset()         { *m = UpdateRefreshTokenUserReq{} }
+func (m *UpdateRefreshTokenUserReq) String() string { return proto.CompactTextString(m) }
+func (*UpdateRefreshTokenUserReq) ProtoMessage()    {}
+func (*UpdateRefreshTokenUserReq) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5fe9d1857265efb6, []int{12}
 }
-func (m *UpdateRefreshTokenReq) XXX_Unmarshal(b []byte) error {
+func (m *UpdateRefreshTokenUserReq) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *UpdateRefreshTokenReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *UpdateRefreshTokenUserReq) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_UpdateRefreshTokenReq.Marshal(b, m, deterministic)
+		return xxx_messageInfo_UpdateRefreshTokenUserReq.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -740,51 +740,51 @@ func (m *UpdateRefreshTokenReq) XXX_Marshal(b []byte, deterministic bool) ([]byt
 		return b[:n], nil
 	}
 }
-func (m *UpdateRefreshTokenReq) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateRefreshTokenReq.Merge(m, src)
+func (m *UpdateRefreshTokenUserReq) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateRefreshTokenUserReq.Merge(m, src)
 }
-func (m *UpdateRefreshTokenReq) XXX_Size() int {
+func (m *UpdateRefreshTokenUserReq) XXX_Size() int {
 	return m.Size()
 }
-func (m *UpdateRefreshTokenReq) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateRefreshTokenReq.DiscardUnknown(m)
+func (m *UpdateRefreshTokenUserReq) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateRefreshTokenUserReq.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_UpdateRefreshTokenReq proto.InternalMessageInfo
+var xxx_messageInfo_UpdateRefreshTokenUserReq proto.InternalMessageInfo
 
-func (m *UpdateRefreshTokenReq) GetUserId() string {
+func (m *UpdateRefreshTokenUserReq) GetId() string {
 	if m != nil {
-		return m.UserId
+		return m.Id
 	}
 	return ""
 }
 
-func (m *UpdateRefreshTokenReq) GetRefreshToken() string {
+func (m *UpdateRefreshTokenUserReq) GetRefreshToken() string {
 	if m != nil {
 		return m.RefreshToken
 	}
 	return ""
 }
 
-type UpdateRefreshTokenResp struct {
+type UpdateRefreshTokenUserResp struct {
 	Status               bool     `protobuf:"varint,1,opt,name=status,proto3" json:"status"`
 	XXX_NoUnkeyedLiteral struct{} `json:"-"`
 	XXX_unrecognized     []byte   `json:"-"`
 	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *UpdateRefreshTokenResp) Reset()         { *m = UpdateRefreshTokenResp{} }
-func (m *UpdateRefreshTokenResp) String() string { return proto.CompactTextString(m) }
-func (*UpdateRefreshTokenResp) ProtoMessage()    {}
-func (*UpdateRefreshTokenResp) Descriptor() ([]byte, []int) {
+func (m *UpdateRefreshTokenUserResp) Reset()         { *m = UpdateRefreshTokenUserResp{} }
+func (m *UpdateRefreshTokenUserResp) String() string { return proto.CompactTextString(m) }
+func (*UpdateRefreshTokenUserResp) ProtoMessage()    {}
+func (*UpdateRefreshTokenUserResp) Descriptor() ([]byte, []int) {
 	return fileDescriptor_5fe9d1857265efb6, []int{13}
 }
-func (m *UpdateRefreshTokenResp) XXX_Unmarshal(b []byte) error {
+func (m *UpdateRefreshTokenUserResp) XXX_Unmarshal(b []byte) error {
 	return m.Unmarshal(b)
 }
-func (m *UpdateRefreshTokenResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+func (m *UpdateRefreshTokenUserResp) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
 	if deterministic {
-		return xxx_messageInfo_UpdateRefreshTokenResp.Marshal(b, m, deterministic)
+		return xxx_messageInfo_UpdateRefreshTokenUserResp.Marshal(b, m, deterministic)
 	} else {
 		b = b[:cap(b)]
 		n, err := m.MarshalToSizedBuffer(b)
@@ -794,19 +794,19 @@ func (m *UpdateRefreshTokenResp) XXX_Marshal(b []byte, deterministic bool) ([]by
 		return b[:n], nil
 	}
 }
-func (m *UpdateRefreshTokenResp) XXX_Merge(src proto.Message) {
-	xxx_messageInfo_UpdateRefreshTokenResp.Merge(m, src)
+func (m *UpdateRefreshTokenUserResp) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_UpdateRefreshTokenUserResp.Merge(m, src)
 }
-func (m *UpdateRefreshTokenResp) XXX_Size() int {
+func (m *UpdateRefreshTokenUserResp) XXX_Size() int {
 	return m.Size()
 }
-func (m *UpdateRefreshTokenResp) XXX_DiscardUnknown() {
-	xxx_messageInfo_UpdateRefreshTokenResp.DiscardUnknown(m)
+func (m *UpdateRefreshTokenUserResp) XXX_DiscardUnknown() {
+	xxx_messageInfo_UpdateRefreshTokenUserResp.DiscardUnknown(m)
 }
 
-var xxx_messageInfo_UpdateRefreshTokenResp proto.InternalMessageInfo
+var xxx_messageInfo_UpdateRefreshTokenUserResp proto.InternalMessageInfo
 
-func (m *UpdateRefreshTokenResp) GetStatus() bool {
+func (m *UpdateRefreshTokenUserResp) GetStatus() bool {
 	if m != nil {
 		return m.Status
 	}
@@ -815,8 +815,8 @@ func (m *UpdateRefreshTokenResp) GetStatus() bool {
 
 func init() {
 	proto.RegisterType((*User)(nil), "user.User")
-	proto.RegisterType((*CheckFieldReq)(nil), "user.CheckFieldReq")
-	proto.RegisterType((*CheckFieldResp)(nil), "user.CheckFieldResp")
+	proto.RegisterType((*CheckFieldUserReq)(nil), "user.CheckFieldUserReq")
+	proto.RegisterType((*CheckFieldUserResp)(nil), "user.CheckFieldUserResp")
 	proto.RegisterType((*GetUserReqById)(nil), "user.GetUserReqById")
 	proto.RegisterType((*ChangeUserPasswordReq)(nil), "user.ChangeUserPasswordReq")
 	proto.RegisterType((*ChangeUserPasswordResp)(nil), "user.ChangeUserPasswordResp")
@@ -824,66 +824,66 @@ func init() {
 	proto.RegisterType((*ListUsersReq)(nil), "user.ListUsersReq")
 	proto.RegisterMapType((map[string]string)(nil), "user.ListUsersReq.FilterEntry")
 	proto.RegisterType((*ListUsersResp)(nil), "user.ListUsersResp")
-	proto.RegisterType((*IfExistsReq)(nil), "user.IfExistsReq")
-	proto.RegisterType((*IfExistsResp)(nil), "user.IfExistsResp")
+	proto.RegisterType((*IfUserExistsReq)(nil), "user.IfUserExistsReq")
+	proto.RegisterType((*IfUserExistsResp)(nil), "user.IfUserExistsResp")
 	proto.RegisterType((*Empty)(nil), "user.Empty")
-	proto.RegisterType((*UpdateRefreshTokenReq)(nil), "user.UpdateRefreshTokenReq")
-	proto.RegisterType((*UpdateRefreshTokenResp)(nil), "user.UpdateRefreshTokenResp")
+	proto.RegisterType((*UpdateRefreshTokenUserReq)(nil), "user.UpdateRefreshTokenUserReq")
+	proto.RegisterType((*UpdateRefreshTokenUserResp)(nil), "user.UpdateRefreshTokenUserResp")
 }
 
 func init() { proto.RegisterFile("user-service/user.proto", fileDescriptor_5fe9d1857265efb6) }
 
 var fileDescriptor_5fe9d1857265efb6 = []byte{
-	// 773 bytes of a gzipped FileDescriptorProto
-	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x54, 0xdb, 0x6e, 0xd3, 0x5a,
-	0x10, 0x3d, 0x76, 0x2e, 0x4d, 0x26, 0x49, 0xd5, 0xb3, 0x4f, 0x2f, 0x96, 0x7b, 0x1a, 0xe5, 0xf8,
-	0xf0, 0x10, 0x84, 0x48, 0x4a, 0x91, 0x0a, 0x85, 0xa7, 0xde, 0x55, 0x81, 0x5a, 0x64, 0x28, 0xaf,
-	0x91, 0x13, 0x8f, 0x13, 0xab, 0x8e, 0xed, 0x7a, 0xef, 0x14, 0xf2, 0x05, 0xfc, 0x02, 0x7f, 0xc1,
-	0x6f, 0xf0, 0xc8, 0x27, 0xa0, 0xf2, 0xc4, 0x5f, 0xa0, 0x7d, 0x31, 0x71, 0x9a, 0x34, 0xe2, 0xcd,
-	0xb3, 0xd6, 0xcc, 0x78, 0xf6, 0xac, 0x99, 0x81, 0x8d, 0x11, 0xc5, 0xe4, 0x31, 0xc5, 0xe4, 0xc6,
-	0xef, 0x61, 0x9b, 0x1b, 0xad, 0x38, 0x89, 0x58, 0x44, 0xf2, 0xfc, 0xdb, 0xdc, 0xec, 0x47, 0x51,
-	0x3f, 0xc0, 0xb6, 0xc0, 0xba, 0x23, 0xaf, 0x8d, 0xc3, 0x98, 0x8d, 0xa5, 0x8b, 0xf5, 0x53, 0x87,
-	0xfc, 0x25, 0xc5, 0x84, 0x2c, 0x83, 0xee, 0xbb, 0x86, 0xd6, 0xd0, 0x9a, 0x65, 0x5b, 0xf7, 0x5d,
-	0xb2, 0x05, 0xc0, 0xa3, 0x3b, 0x51, 0xe2, 0x62, 0x62, 0xe8, 0x0d, 0xad, 0x99, 0xb7, 0xcb, 0x1c,
-	0xb9, 0xe0, 0x00, 0xa7, 0x3d, 0x3f, 0xa1, 0xac, 0x13, 0x3a, 0x43, 0x34, 0x72, 0x22, 0xac, 0x2c,
-	0x90, 0x73, 0x67, 0x88, 0x64, 0x13, 0xca, 0x81, 0x93, 0xb2, 0x79, 0xc1, 0x96, 0x38, 0x20, 0xc8,
-	0x2d, 0x80, 0xae, 0x9f, 0xb0, 0x41, 0xc7, 0x75, 0x18, 0x1a, 0x05, 0x19, 0x2b, 0x90, 0x23, 0x87,
-	0x21, 0xf9, 0x0f, 0xaa, 0xf1, 0x20, 0x0a, 0xb1, 0x13, 0x8e, 0x86, 0x5d, 0x4c, 0x8c, 0xa2, 0x70,
-	0xa8, 0x08, 0xec, 0x5c, 0x40, 0xc4, 0x84, 0x52, 0xec, 0x50, 0xfa, 0x21, 0x4a, 0x5c, 0x63, 0x49,
-	0x66, 0x4f, 0x6d, 0xb2, 0x0e, 0xc5, 0x3e, 0x86, 0xbc, 0xe8, 0x92, 0x60, 0x94, 0x45, 0xfe, 0x87,
-	0x5a, 0x82, 0x5e, 0x82, 0x74, 0xd0, 0x61, 0xd1, 0x15, 0x86, 0x46, 0x59, 0xd0, 0x55, 0x05, 0xbe,
-	0xe3, 0x18, 0x2f, 0xad, 0x97, 0xa0, 0xc3, 0xd0, 0xed, 0x38, 0xcc, 0x00, 0x59, 0x9a, 0x42, 0xf6,
-	0x99, 0x68, 0x4a, 0xec, 0xa6, 0x74, 0x45, 0xd2, 0x0a, 0x91, 0xb4, 0x8b, 0x01, 0x2a, 0xba, 0x2a,
-	0x69, 0x85, 0xec, 0x33, 0xeb, 0x25, 0xd4, 0x0e, 0x07, 0xd8, 0xbb, 0x3a, 0xf1, 0x31, 0x70, 0x6d,
-	0xbc, 0x26, 0xab, 0x50, 0xb8, 0x71, 0x82, 0x11, 0xaa, 0xb6, 0x4b, 0x83, 0xa3, 0x1e, 0xf7, 0x10,
-	0x4d, 0x2f, 0xdb, 0xd2, 0xb0, 0x9a, 0xb0, 0x9c, 0x0d, 0xa6, 0x31, 0x7f, 0x28, 0x65, 0x0e, 0x1b,
-	0x51, 0x11, 0x5e, 0xb2, 0x95, 0x65, 0x3d, 0x84, 0xe5, 0x53, 0x64, 0x5c, 0x54, 0x1b, 0xaf, 0x0f,
-	0xc6, 0x67, 0x2e, 0xd9, 0x80, 0x25, 0xa1, 0xe5, 0x6f, 0x81, 0x8b, 0xdc, 0x3c, 0x73, 0xad, 0xf7,
-	0xb0, 0x76, 0x38, 0x70, 0xc2, 0x3e, 0x72, 0xef, 0x37, 0xaa, 0x83, 0xbc, 0xb2, 0xbb, 0x1a, 0x68,
-	0x8b, 0x35, 0xd0, 0xa7, 0x35, 0xb0, 0xb6, 0x61, 0x7d, 0x5e, 0xde, 0x05, 0x45, 0x37, 0xa1, 0x76,
-	0x24, 0x1a, 0xa5, 0xea, 0xbe, 0xbf, 0xe6, 0x2f, 0x1a, 0x54, 0x5f, 0xfb, 0x54, 0x3c, 0x90, 0xaa,
-	0x2e, 0x06, 0xfe, 0xd0, 0x67, 0xc2, 0x2f, 0x6f, 0x4b, 0x83, 0xff, 0x28, 0xf2, 0x3c, 0x8a, 0x4c,
-	0xcd, 0xae, 0xb2, 0xc8, 0x2e, 0x14, 0x3d, 0x3f, 0x60, 0x98, 0x18, 0xb9, 0x46, 0xae, 0x59, 0xd9,
-	0xa9, 0xb7, 0xc4, 0xc2, 0x64, 0x33, 0xb6, 0x4e, 0x84, 0xc3, 0x71, 0xc8, 0x92, 0xb1, 0xad, 0xbc,
-	0xcd, 0x3d, 0xa8, 0x64, 0x60, 0xb2, 0x02, 0xb9, 0x2b, 0x1c, 0xab, 0xd2, 0xf8, 0xe7, 0x44, 0x4c,
-	0x3d, 0x23, 0xe6, 0x0b, 0xfd, 0xb9, 0x66, 0x9d, 0x42, 0x2d, 0x93, 0x9e, 0xc6, 0xa4, 0x01, 0x05,
-	0xfe, 0x53, 0xde, 0x03, 0x5e, 0x02, 0xc8, 0x12, 0xc4, 0xcb, 0x25, 0xc1, 0x93, 0xf5, 0xa2, 0x51,
-	0x98, 0x16, 0x2f, 0x0d, 0x6b, 0x1b, 0x2a, 0x67, 0xde, 0xf1, 0x47, 0x9f, 0x32, 0xfa, 0x67, 0x22,
-	0x59, 0x8f, 0xa0, 0x3a, 0x89, 0xa0, 0x31, 0xdf, 0x4b, 0x9f, 0x76, 0x50, 0x00, 0x4a, 0x81, 0x92,
-	0x4f, 0xa5, 0x83, 0xb5, 0x04, 0x85, 0x63, 0x7e, 0x1a, 0xac, 0x4b, 0x58, 0xbb, 0x14, 0x43, 0x6d,
-	0x67, 0x76, 0x63, 0x91, 0x28, 0xb3, 0xcb, 0xa5, 0xcf, 0x2e, 0x17, 0x9f, 0x8a, 0x79, 0x69, 0xef,
-	0x9f, 0x8a, 0x9d, 0x4f, 0x79, 0xa8, 0xf0, 0xb6, 0xbc, 0x95, 0xb7, 0x8d, 0x3c, 0x00, 0x38, 0x14,
-	0xcb, 0x28, 0x4e, 0x56, 0xa6, 0x6f, 0x66, 0xe6, 0x9b, 0x7b, 0xc9, 0xff, 0x2c, 0xf4, 0x6a, 0x43,
-	0x45, 0xad, 0x89, 0xd8, 0x91, 0x55, 0x49, 0x4d, 0x6f, 0xce, 0x54, 0xc0, 0xae, 0x08, 0xd8, 0x0f,
-	0x02, 0x21, 0x24, 0x21, 0xb3, 0x83, 0x63, 0xfe, 0x33, 0x83, 0xd1, 0x98, 0xec, 0x01, 0x4c, 0x46,
-	0x9b, 0x28, 0x97, 0xa9, 0x61, 0x37, 0xd7, 0x5b, 0xf2, 0x46, 0xb7, 0xd2, 0x1b, 0xdd, 0x12, 0x42,
-	0x90, 0x67, 0x00, 0x93, 0xa5, 0x4f, 0x43, 0xa7, 0x6e, 0x88, 0xb9, 0x3a, 0x0b, 0xd2, 0x98, 0x3c,
-	0x81, 0x52, 0xaa, 0x3b, 0xf9, 0x5b, 0x7a, 0x64, 0x26, 0xc7, 0x24, 0x77, 0x21, 0x1a, 0x93, 0x57,
-	0xfc, 0xc0, 0xf0, 0x9d, 0x4d, 0xf7, 0x95, 0x6c, 0xa6, 0xa9, 0xe7, 0x5c, 0x08, 0xf3, 0xdf, 0xfb,
-	0x49, 0x1a, 0x93, 0x0b, 0x20, 0xb3, 0x52, 0xa7, 0x09, 0xe7, 0xce, 0x56, 0x9a, 0x70, 0xfe, 0x84,
-	0x1c, 0xac, 0x7c, 0xbd, 0xad, 0x6b, 0xdf, 0x6e, 0xeb, 0xda, 0xf7, 0xdb, 0xba, 0xf6, 0xf9, 0x47,
-	0xfd, 0xaf, 0x6e, 0x51, 0xf4, 0xea, 0xe9, 0xaf, 0x00, 0x00, 0x00, 0xff, 0xff, 0xdc, 0x62, 0x6d,
-	0x74, 0xfe, 0x06, 0x00, 0x00,
+	// 777 bytes of a gzipped FileDescriptorProto
+	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x8c, 0x54, 0xdb, 0x6e, 0xd3, 0x4c,
+	0x10, 0xfe, 0xed, 0x1c, 0x9a, 0x4c, 0xd2, 0xfe, 0x65, 0x69, 0x53, 0xe3, 0xd2, 0x10, 0xcc, 0x05,
+	0x41, 0x82, 0x04, 0x95, 0x82, 0x28, 0x37, 0x55, 0xcf, 0x8a, 0x40, 0xa5, 0x32, 0x14, 0x2e, 0x23,
+	0x27, 0x1e, 0x27, 0x56, 0x13, 0xdb, 0x78, 0x37, 0x85, 0x3c, 0x02, 0x6f, 0xc0, 0x5b, 0xf0, 0x1a,
+	0x5c, 0xf2, 0x08, 0xa8, 0x5c, 0xf1, 0x16, 0x68, 0x0f, 0x6e, 0x73, 0xac, 0xb8, 0xf3, 0x7c, 0xdf,
+	0xb7, 0xb3, 0xe3, 0xf9, 0x66, 0x16, 0xd6, 0x06, 0x14, 0xe3, 0x27, 0x14, 0xe3, 0x0b, 0xbf, 0x8d,
+	0x75, 0x1e, 0xd4, 0xa2, 0x38, 0x64, 0x21, 0x49, 0xf3, 0x6f, 0x73, 0xbd, 0x13, 0x86, 0x9d, 0x1e,
+	0xd6, 0x05, 0xd6, 0x1a, 0x78, 0x75, 0xec, 0x47, 0x6c, 0x28, 0x25, 0xd6, 0x1f, 0x1d, 0xd2, 0x67,
+	0x14, 0x63, 0xb2, 0x04, 0xba, 0xef, 0x1a, 0x5a, 0x45, 0xab, 0xe6, 0x6d, 0xdd, 0x77, 0xc9, 0x06,
+	0x00, 0x3f, 0xdd, 0x0c, 0x63, 0x17, 0x63, 0x43, 0xaf, 0x68, 0xd5, 0xb4, 0x9d, 0xe7, 0xc8, 0x5b,
+	0x0e, 0x70, 0xda, 0xf3, 0x63, 0xca, 0x9a, 0x81, 0xd3, 0x47, 0x23, 0x25, 0x8e, 0xe5, 0x05, 0x72,
+	0xe2, 0xf4, 0x91, 0xac, 0x43, 0xbe, 0xe7, 0x24, 0x6c, 0x5a, 0xb0, 0x39, 0x0e, 0x08, 0x72, 0x03,
+	0xa0, 0xe5, 0xc7, 0xac, 0xdb, 0x74, 0x1d, 0x86, 0x46, 0x46, 0x9e, 0x15, 0xc8, 0x81, 0xc3, 0x90,
+	0xdc, 0x87, 0x62, 0xd4, 0x0d, 0x03, 0x6c, 0x06, 0x83, 0x7e, 0x0b, 0x63, 0x23, 0x2b, 0x04, 0x05,
+	0x81, 0x9d, 0x08, 0x88, 0x98, 0x90, 0x8b, 0x1c, 0x4a, 0x3f, 0x87, 0xb1, 0x6b, 0x2c, 0xc8, 0xec,
+	0x49, 0x4c, 0x4a, 0x90, 0xed, 0x60, 0xc0, 0x8b, 0xce, 0x09, 0x46, 0x45, 0xe4, 0x01, 0x2c, 0xc6,
+	0xe8, 0xc5, 0x48, 0xbb, 0x4d, 0x16, 0x9e, 0x63, 0x60, 0xe4, 0x05, 0x5d, 0x54, 0xe0, 0x7b, 0x8e,
+	0xf1, 0xd2, 0xda, 0x31, 0x3a, 0x0c, 0xdd, 0xa6, 0xc3, 0x0c, 0x90, 0xa5, 0x29, 0x64, 0x97, 0x89,
+	0xa6, 0x44, 0x6e, 0x42, 0x17, 0x24, 0xad, 0x10, 0x49, 0xbb, 0xd8, 0x43, 0x45, 0x17, 0x25, 0xad,
+	0x90, 0x5d, 0x66, 0xed, 0xc0, 0xad, 0xfd, 0x2e, 0xb6, 0xcf, 0x8f, 0x7c, 0xec, 0xb9, 0xbc, 0xe9,
+	0x36, 0x7e, 0x22, 0x2b, 0x90, 0xb9, 0x70, 0x7a, 0x03, 0x54, 0xad, 0x97, 0x01, 0x47, 0x3d, 0xae,
+	0x12, 0x8d, 0xcf, 0xdb, 0x32, 0xb0, 0x1e, 0x03, 0x99, 0x4c, 0x40, 0x23, 0xfe, 0xc3, 0x94, 0x39,
+	0x6c, 0x40, 0x45, 0x8a, 0x9c, 0xad, 0x22, 0xeb, 0x11, 0x2c, 0x1d, 0x23, 0x53, 0xf7, 0xec, 0x0d,
+	0x1b, 0x2e, 0x59, 0x83, 0x05, 0xe1, 0xe9, 0x95, 0xd1, 0x59, 0x1e, 0x36, 0x5c, 0xeb, 0x03, 0xac,
+	0xee, 0x77, 0x9d, 0xa0, 0x83, 0x5c, 0x7d, 0xaa, 0x3a, 0xc9, 0xab, 0x9b, 0xf4, 0x42, 0xbb, 0xd9,
+	0x0b, 0x7d, 0xdc, 0x0b, 0xeb, 0x29, 0x94, 0x66, 0xe5, 0xbd, 0xa1, 0xe8, 0x2a, 0x2c, 0x1e, 0x88,
+	0x86, 0x25, 0xfd, 0x99, 0x5b, 0xf3, 0x77, 0x0d, 0x8a, 0x6f, 0x7c, 0x2a, 0x7e, 0x90, 0xaa, 0x4e,
+	0xf6, 0xfc, 0xbe, 0xcf, 0x84, 0x2e, 0x6d, 0xcb, 0x80, 0x5f, 0x14, 0x7a, 0x1e, 0x45, 0xa6, 0x66,
+	0x58, 0x45, 0xe4, 0x05, 0x64, 0x3d, 0xbf, 0xc7, 0x30, 0x36, 0x52, 0x95, 0x54, 0xb5, 0xb0, 0x59,
+	0xae, 0x89, 0xc5, 0x19, 0xcd, 0x58, 0x3b, 0x12, 0x82, 0xc3, 0x80, 0xc5, 0x43, 0x5b, 0xa9, 0xcd,
+	0x6d, 0x28, 0x8c, 0xc0, 0x64, 0x19, 0x52, 0xe7, 0x38, 0x54, 0xa5, 0xf1, 0xcf, 0x6b, 0x43, 0xf5,
+	0x11, 0x43, 0x5f, 0xe9, 0x2f, 0x35, 0xeb, 0x18, 0x16, 0x47, 0xd2, 0xd3, 0x88, 0x54, 0x20, 0xc3,
+	0x2f, 0xe5, 0x3d, 0xe0, 0x25, 0x80, 0x2c, 0x41, 0xfc, 0xb9, 0x24, 0x78, 0xb2, 0x76, 0x38, 0x08,
+	0x92, 0xe2, 0x65, 0x60, 0x6d, 0xc1, 0xff, 0x0d, 0x8f, 0xcb, 0x0e, 0xbf, 0xf8, 0x94, 0xd1, 0x7f,
+	0x33, 0xca, 0xaa, 0xc3, 0xf2, 0xf8, 0x29, 0x1a, 0xf1, 0x3d, 0xf5, 0x69, 0x13, 0x05, 0xa0, 0x9c,
+	0xc8, 0xf9, 0x54, 0x0a, 0xac, 0x05, 0xc8, 0x1c, 0xf2, 0xa7, 0xc2, 0x3a, 0x85, 0x3b, 0x67, 0x62,
+	0xc8, 0xed, 0x91, 0x5d, 0x49, 0x0c, 0x9a, 0x7c, 0x38, 0xa6, 0xf6, 0x4c, 0x9f, 0xde, 0x33, 0x6b,
+	0x0b, 0xcc, 0x79, 0x19, 0xe7, 0x0f, 0xc7, 0xe6, 0xd7, 0x34, 0x14, 0xb8, 0xe8, 0x9d, 0x7c, 0xea,
+	0x48, 0x05, 0xb2, 0xfb, 0x62, 0x37, 0xc9, 0x48, 0xeb, 0xcc, 0x91, 0x6f, 0xae, 0x90, 0xf7, 0xcc,
+	0x55, 0x3c, 0x84, 0xd4, 0x31, 0x32, 0xb2, 0x22, 0xa1, 0xf1, 0x85, 0x19, 0x13, 0x6e, 0x41, 0xfe,
+	0xca, 0x3d, 0x42, 0xa6, 0xa7, 0xc5, 0xbc, 0x3d, 0x85, 0xd1, 0x88, 0x3c, 0x87, 0xac, 0x9c, 0x67,
+	0xa2, 0xe8, 0xb1, 0xe9, 0x36, 0x4b, 0x35, 0xf9, 0x38, 0xd7, 0x92, 0xc7, 0xb9, 0x26, 0x3a, 0x4e,
+	0x76, 0x00, 0xae, 0x37, 0x9d, 0xac, 0xc9, 0xa3, 0x53, 0x8f, 0x87, 0x69, 0xcc, 0x26, 0x68, 0x44,
+	0xb6, 0x21, 0xd7, 0xf0, 0xa4, 0x8f, 0x64, 0x55, 0xaa, 0x26, 0x46, 0xc6, 0x2c, 0xcd, 0x82, 0x69,
+	0x44, 0x5e, 0xc3, 0x92, 0x5c, 0xda, 0x64, 0x61, 0xc9, 0x7a, 0x72, 0xcd, 0x8c, 0x27, 0xc2, 0xbc,
+	0x3b, 0x9f, 0xa4, 0x11, 0xf9, 0x08, 0x64, 0xda, 0x68, 0x72, 0x4f, 0xf5, 0x75, 0xde, 0x50, 0x99,
+	0x95, 0x9b, 0x05, 0x34, 0xda, 0x5b, 0xfe, 0x71, 0x59, 0xd6, 0x7e, 0x5e, 0x96, 0xb5, 0x5f, 0x97,
+	0x65, 0xed, 0xdb, 0xef, 0xf2, 0x7f, 0xad, 0xac, 0xe8, 0xe1, 0xb3, 0xbf, 0x01, 0x00, 0x00, 0xff,
+	0xff, 0xda, 0x0b, 0xc9, 0x88, 0x0f, 0x07, 0x00, 0x00,
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -898,15 +898,15 @@ const _ = grpc.SupportPackageIsVersion4
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type UserServiceClient interface {
-	CreateUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
-	UpdateUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
-	GetUserById(ctx context.Context, in *GetUserReqById, opts ...grpc.CallOption) (*User, error)
-	GetAllUsers(ctx context.Context, in *ListUsersReq, opts ...grpc.CallOption) (*ListUsersResp, error)
-	DeleteUser(ctx context.Context, in *DeleteUserReq, opts ...grpc.CallOption) (*empty.Empty, error)
-	CheckField(ctx context.Context, in *CheckFieldReq, opts ...grpc.CallOption) (*CheckFieldResp, error)
-	IfExists(ctx context.Context, in *IfExistsReq, opts ...grpc.CallOption) (*IfExistsResp, error)
+	Create(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
+	Update(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error)
+	Get(ctx context.Context, in *GetUserReqById, opts ...grpc.CallOption) (*User, error)
+	ListUsers(ctx context.Context, in *ListUsersReq, opts ...grpc.CallOption) (*ListUsersResp, error)
+	Delete(ctx context.Context, in *DeleteUserReq, opts ...grpc.CallOption) (*empty.Empty, error)
+	CheckField(ctx context.Context, in *CheckFieldUserReq, opts ...grpc.CallOption) (*CheckFieldUserResp, error)
+	IfExists(ctx context.Context, in *IfUserExistsReq, opts ...grpc.CallOption) (*IfUserExistsResp, error)
 	ChangePassword(ctx context.Context, in *ChangeUserPasswordReq, opts ...grpc.CallOption) (*ChangeUserPasswordResp, error)
-	UpdateRefreshToken(ctx context.Context, in *UpdateRefreshTokenReq, opts ...grpc.CallOption) (*UpdateRefreshTokenResp, error)
+	UpdateRefreshToken(ctx context.Context, in *UpdateRefreshTokenUserReq, opts ...grpc.CallOption) (*UpdateRefreshTokenUserResp, error)
 }
 
 type userServiceClient struct {
@@ -917,53 +917,53 @@ func NewUserServiceClient(cc *grpc.ClientConn) UserServiceClient {
 	return &userServiceClient{cc}
 }
 
-func (c *userServiceClient) CreateUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
+func (c *userServiceClient) Create(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/user.UserService/CreateUser", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.UserService/Create", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) UpdateUser(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
+func (c *userServiceClient) Update(ctx context.Context, in *User, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/user.UserService/UpdateUser", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.UserService/Update", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) GetUserById(ctx context.Context, in *GetUserReqById, opts ...grpc.CallOption) (*User, error) {
+func (c *userServiceClient) Get(ctx context.Context, in *GetUserReqById, opts ...grpc.CallOption) (*User, error) {
 	out := new(User)
-	err := c.cc.Invoke(ctx, "/user.UserService/GetUserById", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.UserService/Get", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) GetAllUsers(ctx context.Context, in *ListUsersReq, opts ...grpc.CallOption) (*ListUsersResp, error) {
+func (c *userServiceClient) ListUsers(ctx context.Context, in *ListUsersReq, opts ...grpc.CallOption) (*ListUsersResp, error) {
 	out := new(ListUsersResp)
-	err := c.cc.Invoke(ctx, "/user.UserService/GetAllUsers", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.UserService/ListUsers", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) DeleteUser(ctx context.Context, in *DeleteUserReq, opts ...grpc.CallOption) (*empty.Empty, error) {
+func (c *userServiceClient) Delete(ctx context.Context, in *DeleteUserReq, opts ...grpc.CallOption) (*empty.Empty, error) {
 	out := new(empty.Empty)
-	err := c.cc.Invoke(ctx, "/user.UserService/DeleteUser", in, out, opts...)
+	err := c.cc.Invoke(ctx, "/user.UserService/Delete", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
 	return out, nil
 }
 
-func (c *userServiceClient) CheckField(ctx context.Context, in *CheckFieldReq, opts ...grpc.CallOption) (*CheckFieldResp, error) {
-	out := new(CheckFieldResp)
+func (c *userServiceClient) CheckField(ctx context.Context, in *CheckFieldUserReq, opts ...grpc.CallOption) (*CheckFieldUserResp, error) {
+	out := new(CheckFieldUserResp)
 	err := c.cc.Invoke(ctx, "/user.UserService/CheckField", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -971,8 +971,8 @@ func (c *userServiceClient) CheckField(ctx context.Context, in *CheckFieldReq, o
 	return out, nil
 }
 
-func (c *userServiceClient) IfExists(ctx context.Context, in *IfExistsReq, opts ...grpc.CallOption) (*IfExistsResp, error) {
-	out := new(IfExistsResp)
+func (c *userServiceClient) IfExists(ctx context.Context, in *IfUserExistsReq, opts ...grpc.CallOption) (*IfUserExistsResp, error) {
+	out := new(IfUserExistsResp)
 	err := c.cc.Invoke(ctx, "/user.UserService/IfExists", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -989,8 +989,8 @@ func (c *userServiceClient) ChangePassword(ctx context.Context, in *ChangeUserPa
 	return out, nil
 }
 
-func (c *userServiceClient) UpdateRefreshToken(ctx context.Context, in *UpdateRefreshTokenReq, opts ...grpc.CallOption) (*UpdateRefreshTokenResp, error) {
-	out := new(UpdateRefreshTokenResp)
+func (c *userServiceClient) UpdateRefreshToken(ctx context.Context, in *UpdateRefreshTokenUserReq, opts ...grpc.CallOption) (*UpdateRefreshTokenUserResp, error) {
+	out := new(UpdateRefreshTokenUserResp)
 	err := c.cc.Invoke(ctx, "/user.UserService/UpdateRefreshToken", in, out, opts...)
 	if err != nil {
 		return nil, err
@@ -1000,46 +1000,46 @@ func (c *userServiceClient) UpdateRefreshToken(ctx context.Context, in *UpdateRe
 
 // UserServiceServer is the server API for UserService service.
 type UserServiceServer interface {
-	CreateUser(context.Context, *User) (*User, error)
-	UpdateUser(context.Context, *User) (*User, error)
-	GetUserById(context.Context, *GetUserReqById) (*User, error)
-	GetAllUsers(context.Context, *ListUsersReq) (*ListUsersResp, error)
-	DeleteUser(context.Context, *DeleteUserReq) (*empty.Empty, error)
-	CheckField(context.Context, *CheckFieldReq) (*CheckFieldResp, error)
-	IfExists(context.Context, *IfExistsReq) (*IfExistsResp, error)
+	Create(context.Context, *User) (*User, error)
+	Update(context.Context, *User) (*User, error)
+	Get(context.Context, *GetUserReqById) (*User, error)
+	ListUsers(context.Context, *ListUsersReq) (*ListUsersResp, error)
+	Delete(context.Context, *DeleteUserReq) (*empty.Empty, error)
+	CheckField(context.Context, *CheckFieldUserReq) (*CheckFieldUserResp, error)
+	IfExists(context.Context, *IfUserExistsReq) (*IfUserExistsResp, error)
 	ChangePassword(context.Context, *ChangeUserPasswordReq) (*ChangeUserPasswordResp, error)
-	UpdateRefreshToken(context.Context, *UpdateRefreshTokenReq) (*UpdateRefreshTokenResp, error)
+	UpdateRefreshToken(context.Context, *UpdateRefreshTokenUserReq) (*UpdateRefreshTokenUserResp, error)
 }
 
 // UnimplementedUserServiceServer can be embedded to have forward compatible implementations.
 type UnimplementedUserServiceServer struct {
 }
 
-func (*UnimplementedUserServiceServer) CreateUser(ctx context.Context, req *User) (*User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method CreateUser not implemented")
+func (*UnimplementedUserServiceServer) Create(ctx context.Context, req *User) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Create not implemented")
 }
-func (*UnimplementedUserServiceServer) UpdateUser(ctx context.Context, req *User) (*User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method UpdateUser not implemented")
+func (*UnimplementedUserServiceServer) Update(ctx context.Context, req *User) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Update not implemented")
 }
-func (*UnimplementedUserServiceServer) GetUserById(ctx context.Context, req *GetUserReqById) (*User, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetUserById not implemented")
+func (*UnimplementedUserServiceServer) Get(ctx context.Context, req *GetUserReqById) (*User, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Get not implemented")
 }
-func (*UnimplementedUserServiceServer) GetAllUsers(ctx context.Context, req *ListUsersReq) (*ListUsersResp, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method GetAllUsers not implemented")
+func (*UnimplementedUserServiceServer) ListUsers(ctx context.Context, req *ListUsersReq) (*ListUsersResp, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method ListUsers not implemented")
 }
-func (*UnimplementedUserServiceServer) DeleteUser(ctx context.Context, req *DeleteUserReq) (*empty.Empty, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method DeleteUser not implemented")
+func (*UnimplementedUserServiceServer) Delete(ctx context.Context, req *DeleteUserReq) (*empty.Empty, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method Delete not implemented")
 }
-func (*UnimplementedUserServiceServer) CheckField(ctx context.Context, req *CheckFieldReq) (*CheckFieldResp, error) {
+func (*UnimplementedUserServiceServer) CheckField(ctx context.Context, req *CheckFieldUserReq) (*CheckFieldUserResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method CheckField not implemented")
 }
-func (*UnimplementedUserServiceServer) IfExists(ctx context.Context, req *IfExistsReq) (*IfExistsResp, error) {
+func (*UnimplementedUserServiceServer) IfExists(ctx context.Context, req *IfUserExistsReq) (*IfUserExistsResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method IfExists not implemented")
 }
 func (*UnimplementedUserServiceServer) ChangePassword(ctx context.Context, req *ChangeUserPasswordReq) (*ChangeUserPasswordResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method ChangePassword not implemented")
 }
-func (*UnimplementedUserServiceServer) UpdateRefreshToken(ctx context.Context, req *UpdateRefreshTokenReq) (*UpdateRefreshTokenResp, error) {
+func (*UnimplementedUserServiceServer) UpdateRefreshToken(ctx context.Context, req *UpdateRefreshTokenUserReq) (*UpdateRefreshTokenUserResp, error) {
 	return nil, status.Errorf(codes.Unimplemented, "method UpdateRefreshToken not implemented")
 }
 
@@ -1047,98 +1047,98 @@ func RegisterUserServiceServer(s *grpc.Server, srv UserServiceServer) {
 	s.RegisterService(&_UserService_serviceDesc, srv)
 }
 
-func _UserService_CreateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserService_Create_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(User)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).CreateUser(ctx, in)
+		return srv.(UserServiceServer).Create(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.UserService/CreateUser",
+		FullMethod: "/user.UserService/Create",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).CreateUser(ctx, req.(*User))
+		return srv.(UserServiceServer).Create(ctx, req.(*User))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_UpdateUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserService_Update_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(User)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).UpdateUser(ctx, in)
+		return srv.(UserServiceServer).Update(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.UserService/UpdateUser",
+		FullMethod: "/user.UserService/Update",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).UpdateUser(ctx, req.(*User))
+		return srv.(UserServiceServer).Update(ctx, req.(*User))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_GetUserById_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserService_Get_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(GetUserReqById)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetUserById(ctx, in)
+		return srv.(UserServiceServer).Get(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.UserService/GetUserById",
+		FullMethod: "/user.UserService/Get",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetUserById(ctx, req.(*GetUserReqById))
+		return srv.(UserServiceServer).Get(ctx, req.(*GetUserReqById))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_GetAllUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserService_ListUsers_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(ListUsersReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).GetAllUsers(ctx, in)
+		return srv.(UserServiceServer).ListUsers(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.UserService/GetAllUsers",
+		FullMethod: "/user.UserService/ListUsers",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).GetAllUsers(ctx, req.(*ListUsersReq))
+		return srv.(UserServiceServer).ListUsers(ctx, req.(*ListUsersReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
-func _UserService_DeleteUser_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+func _UserService_Delete_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
 	in := new(DeleteUserReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(UserServiceServer).DeleteUser(ctx, in)
+		return srv.(UserServiceServer).Delete(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: "/user.UserService/DeleteUser",
+		FullMethod: "/user.UserService/Delete",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).DeleteUser(ctx, req.(*DeleteUserReq))
+		return srv.(UserServiceServer).Delete(ctx, req.(*DeleteUserReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _UserService_CheckField_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(CheckFieldReq)
+	in := new(CheckFieldUserReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1150,13 +1150,13 @@ func _UserService_CheckField_Handler(srv interface{}, ctx context.Context, dec f
 		FullMethod: "/user.UserService/CheckField",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).CheckField(ctx, req.(*CheckFieldReq))
+		return srv.(UserServiceServer).CheckField(ctx, req.(*CheckFieldUserReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
 
 func _UserService_IfExists_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(IfExistsReq)
+	in := new(IfUserExistsReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1168,7 +1168,7 @@ func _UserService_IfExists_Handler(srv interface{}, ctx context.Context, dec fun
 		FullMethod: "/user.UserService/IfExists",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).IfExists(ctx, req.(*IfExistsReq))
+		return srv.(UserServiceServer).IfExists(ctx, req.(*IfUserExistsReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1192,7 +1192,7 @@ func _UserService_ChangePassword_Handler(srv interface{}, ctx context.Context, d
 }
 
 func _UserService_UpdateRefreshToken_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(UpdateRefreshTokenReq)
+	in := new(UpdateRefreshTokenUserReq)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
@@ -1204,7 +1204,7 @@ func _UserService_UpdateRefreshToken_Handler(srv interface{}, ctx context.Contex
 		FullMethod: "/user.UserService/UpdateRefreshToken",
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(UserServiceServer).UpdateRefreshToken(ctx, req.(*UpdateRefreshTokenReq))
+		return srv.(UserServiceServer).UpdateRefreshToken(ctx, req.(*UpdateRefreshTokenUserReq))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -1214,24 +1214,24 @@ var _UserService_serviceDesc = grpc.ServiceDesc{
 	HandlerType: (*UserServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "CreateUser",
-			Handler:    _UserService_CreateUser_Handler,
+			MethodName: "Create",
+			Handler:    _UserService_Create_Handler,
 		},
 		{
-			MethodName: "UpdateUser",
-			Handler:    _UserService_UpdateUser_Handler,
+			MethodName: "Update",
+			Handler:    _UserService_Update_Handler,
 		},
 		{
-			MethodName: "GetUserById",
-			Handler:    _UserService_GetUserById_Handler,
+			MethodName: "Get",
+			Handler:    _UserService_Get_Handler,
 		},
 		{
-			MethodName: "GetAllUsers",
-			Handler:    _UserService_GetAllUsers_Handler,
+			MethodName: "ListUsers",
+			Handler:    _UserService_ListUsers_Handler,
 		},
 		{
-			MethodName: "DeleteUser",
-			Handler:    _UserService_DeleteUser_Handler,
+			MethodName: "Delete",
+			Handler:    _UserService_Delete_Handler,
 		},
 		{
 			MethodName: "CheckField",
@@ -1363,7 +1363,7 @@ func (m *User) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *CheckFieldReq) Marshal() (dAtA []byte, err error) {
+func (m *CheckFieldUserReq) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1373,12 +1373,12 @@ func (m *CheckFieldReq) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *CheckFieldReq) MarshalTo(dAtA []byte) (int, error) {
+func (m *CheckFieldUserReq) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *CheckFieldReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *CheckFieldUserReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1404,7 +1404,7 @@ func (m *CheckFieldReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *CheckFieldResp) Marshal() (dAtA []byte, err error) {
+func (m *CheckFieldUserResp) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1414,12 +1414,12 @@ func (m *CheckFieldResp) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *CheckFieldResp) MarshalTo(dAtA []byte) (int, error) {
+func (m *CheckFieldUserResp) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *CheckFieldResp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *CheckFieldUserResp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1689,7 +1689,7 @@ func (m *ListUsersResp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *IfExistsReq) Marshal() (dAtA []byte, err error) {
+func (m *IfUserExistsReq) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1699,12 +1699,12 @@ func (m *IfExistsReq) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *IfExistsReq) MarshalTo(dAtA []byte) (int, error) {
+func (m *IfUserExistsReq) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *IfExistsReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *IfUserExistsReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1723,7 +1723,7 @@ func (m *IfExistsReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *IfExistsResp) Marshal() (dAtA []byte, err error) {
+func (m *IfUserExistsResp) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1733,12 +1733,12 @@ func (m *IfExistsResp) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *IfExistsResp) MarshalTo(dAtA []byte) (int, error) {
+func (m *IfUserExistsResp) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *IfExistsResp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *IfUserExistsResp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1787,7 +1787,7 @@ func (m *Empty) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	return len(dAtA) - i, nil
 }
 
-func (m *UpdateRefreshTokenReq) Marshal() (dAtA []byte, err error) {
+func (m *UpdateRefreshTokenUserReq) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1797,12 +1797,12 @@ func (m *UpdateRefreshTokenReq) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *UpdateRefreshTokenReq) MarshalTo(dAtA []byte) (int, error) {
+func (m *UpdateRefreshTokenUserReq) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *UpdateRefreshTokenReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *UpdateRefreshTokenUserReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1818,17 +1818,17 @@ func (m *UpdateRefreshTokenReq) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 		i--
 		dAtA[i] = 0x12
 	}
-	if len(m.UserId) > 0 {
-		i -= len(m.UserId)
-		copy(dAtA[i:], m.UserId)
-		i = encodeVarintUser(dAtA, i, uint64(len(m.UserId)))
+	if len(m.Id) > 0 {
+		i -= len(m.Id)
+		copy(dAtA[i:], m.Id)
+		i = encodeVarintUser(dAtA, i, uint64(len(m.Id)))
 		i--
 		dAtA[i] = 0xa
 	}
 	return len(dAtA) - i, nil
 }
 
-func (m *UpdateRefreshTokenResp) Marshal() (dAtA []byte, err error) {
+func (m *UpdateRefreshTokenUserResp) Marshal() (dAtA []byte, err error) {
 	size := m.Size()
 	dAtA = make([]byte, size)
 	n, err := m.MarshalToSizedBuffer(dAtA[:size])
@@ -1838,12 +1838,12 @@ func (m *UpdateRefreshTokenResp) Marshal() (dAtA []byte, err error) {
 	return dAtA[:n], nil
 }
 
-func (m *UpdateRefreshTokenResp) MarshalTo(dAtA []byte) (int, error) {
+func (m *UpdateRefreshTokenUserResp) MarshalTo(dAtA []byte) (int, error) {
 	size := m.Size()
 	return m.MarshalToSizedBuffer(dAtA[:size])
 }
 
-func (m *UpdateRefreshTokenResp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
+func (m *UpdateRefreshTokenUserResp) MarshalToSizedBuffer(dAtA []byte) (int, error) {
 	i := len(dAtA)
 	_ = i
 	var l int
@@ -1935,7 +1935,7 @@ func (m *User) Size() (n int) {
 	return n
 }
 
-func (m *CheckFieldReq) Size() (n int) {
+func (m *CheckFieldUserReq) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -1955,7 +1955,7 @@ func (m *CheckFieldReq) Size() (n int) {
 	return n
 }
 
-func (m *CheckFieldResp) Size() (n int) {
+func (m *CheckFieldUserResp) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2084,7 +2084,7 @@ func (m *ListUsersResp) Size() (n int) {
 	return n
 }
 
-func (m *IfExistsReq) Size() (n int) {
+func (m *IfUserExistsReq) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2100,7 +2100,7 @@ func (m *IfExistsReq) Size() (n int) {
 	return n
 }
 
-func (m *IfExistsResp) Size() (n int) {
+func (m *IfUserExistsResp) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2127,13 +2127,13 @@ func (m *Empty) Size() (n int) {
 	return n
 }
 
-func (m *UpdateRefreshTokenReq) Size() (n int) {
+func (m *UpdateRefreshTokenUserReq) Size() (n int) {
 	if m == nil {
 		return 0
 	}
 	var l int
 	_ = l
-	l = len(m.UserId)
+	l = len(m.Id)
 	if l > 0 {
 		n += 1 + l + sovUser(uint64(l))
 	}
@@ -2147,7 +2147,7 @@ func (m *UpdateRefreshTokenReq) Size() (n int) {
 	return n
 }
 
-func (m *UpdateRefreshTokenResp) Size() (n int) {
+func (m *UpdateRefreshTokenUserResp) Size() (n int) {
 	if m == nil {
 		return 0
 	}
@@ -2590,7 +2590,7 @@ func (m *User) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *CheckFieldReq) Unmarshal(dAtA []byte) error {
+func (m *CheckFieldUserReq) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2613,10 +2613,10 @@ func (m *CheckFieldReq) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: CheckFieldReq: wiretype end group for non-group")
+			return fmt.Errorf("proto: CheckFieldUserReq: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: CheckFieldReq: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: CheckFieldUserReq: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -2705,7 +2705,7 @@ func (m *CheckFieldReq) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *CheckFieldResp) Unmarshal(dAtA []byte) error {
+func (m *CheckFieldUserResp) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -2728,10 +2728,10 @@ func (m *CheckFieldResp) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: CheckFieldResp: wiretype end group for non-group")
+			return fmt.Errorf("proto: CheckFieldUserResp: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: CheckFieldResp: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: CheckFieldUserResp: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -3448,7 +3448,7 @@ func (m *ListUsersResp) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *IfExistsReq) Unmarshal(dAtA []byte) error {
+func (m *IfUserExistsReq) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3471,10 +3471,10 @@ func (m *IfExistsReq) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: IfExistsReq: wiretype end group for non-group")
+			return fmt.Errorf("proto: IfUserExistsReq: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: IfExistsReq: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: IfUserExistsReq: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -3531,7 +3531,7 @@ func (m *IfExistsReq) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *IfExistsResp) Unmarshal(dAtA []byte) error {
+func (m *IfUserExistsResp) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3554,10 +3554,10 @@ func (m *IfExistsResp) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: IfExistsResp: wiretype end group for non-group")
+			return fmt.Errorf("proto: IfUserExistsResp: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: IfExistsResp: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: IfUserExistsResp: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
@@ -3653,7 +3653,7 @@ func (m *Empty) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *UpdateRefreshTokenReq) Unmarshal(dAtA []byte) error {
+func (m *UpdateRefreshTokenUserReq) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3676,15 +3676,15 @@ func (m *UpdateRefreshTokenReq) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: UpdateRefreshTokenReq: wiretype end group for non-group")
+			return fmt.Errorf("proto: UpdateRefreshTokenUserReq: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: UpdateRefreshTokenReq: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: UpdateRefreshTokenUserReq: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:
 			if wireType != 2 {
-				return fmt.Errorf("proto: wrong wireType = %d for field UserId", wireType)
+				return fmt.Errorf("proto: wrong wireType = %d for field Id", wireType)
 			}
 			var stringLen uint64
 			for shift := uint(0); ; shift += 7 {
@@ -3712,7 +3712,7 @@ func (m *UpdateRefreshTokenReq) Unmarshal(dAtA []byte) error {
 			if postIndex > l {
 				return io.ErrUnexpectedEOF
 			}
-			m.UserId = string(dAtA[iNdEx:postIndex])
+			m.Id = string(dAtA[iNdEx:postIndex])
 			iNdEx = postIndex
 		case 2:
 			if wireType != 2 {
@@ -3768,7 +3768,7 @@ func (m *UpdateRefreshTokenReq) Unmarshal(dAtA []byte) error {
 	}
 	return nil
 }
-func (m *UpdateRefreshTokenResp) Unmarshal(dAtA []byte) error {
+func (m *UpdateRefreshTokenUserResp) Unmarshal(dAtA []byte) error {
 	l := len(dAtA)
 	iNdEx := 0
 	for iNdEx < l {
@@ -3791,10 +3791,10 @@ func (m *UpdateRefreshTokenResp) Unmarshal(dAtA []byte) error {
 		fieldNum := int32(wire >> 3)
 		wireType := int(wire & 0x7)
 		if wireType == 4 {
-			return fmt.Errorf("proto: UpdateRefreshTokenResp: wiretype end group for non-group")
+			return fmt.Errorf("proto: UpdateRefreshTokenUserResp: wiretype end group for non-group")
 		}
 		if fieldNum <= 0 {
-			return fmt.Errorf("proto: UpdateRefreshTokenResp: illegal tag %d (wire type %d)", fieldNum, wire)
+			return fmt.Errorf("proto: UpdateRefreshTokenUserResp: illegal tag %d (wire type %d)", fieldNum, wire)
 		}
 		switch fieldNum {
 		case 1:

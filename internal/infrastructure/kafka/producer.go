@@ -4,7 +4,6 @@ import (
 	"context"
 	"dennic_user_service/internal/entity"
 	"dennic_user_service/internal/pkg/config"
-	"dennic_user_service/internal/pkg/otlp"
 
 	"github.com/segmentio/kafka-go"
 	"go.uber.org/zap"
@@ -43,18 +42,19 @@ func NewProducer(config *config.Config, logger *zap.Logger) *producer {
 	}
 }
 
-func (p *producer) BuildMessageWithTracing(key string, value []byte, otlpSpan otlp.Span) kafka.Message {
+// func (p *producer) buildMessageWithTracing(key string, value []byte, otlpSpan otlp.Span) kafka.Message {
+func (p *producer) BuildMessageWithTracing(key string, value []byte) kafka.Message {
 	return kafka.Message{
 		Key:   []byte(key),
 		Value: value,
 		Headers: []kafka.Header{
 			{
-				Key:   "trace_id",
-				Value: []byte(otlpSpan.SpanContext().TraceID().String()),
+				Key: "trace_id",
+				// Value: []byte(otlpSpan.SpanContext().TraceID().String()),
 			},
 			{
-				Key:   "span_id",
-				Value: []byte(otlpSpan.SpanContext().SpanID().String()),
+				Key: "span_id",
+				// Value: []byte(otlpSpan.SpanContext().SpanID().String()),
 			},
 		},
 	}

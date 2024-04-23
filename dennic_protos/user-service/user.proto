@@ -5,16 +5,17 @@ package user;
 import "google/protobuf/empty.proto";
 
 service UserService {
-  rpc CreateUser(User) returns (User);
-  rpc UpdateUser(User) returns (User);
-  rpc GetUserById(GetUserReqById) returns (User);
-  rpc GetAllUsers(ListUsersReq) returns (ListUsersResp);
-  rpc DeleteUser(DeleteUserReq) returns (google.protobuf.Empty);
-  rpc CheckField(CheckFieldReq) returns (CheckFieldResp);
-  rpc IfExists(IfExistsReq) returns (IfExistsResp);
+  rpc Create(User) returns (User);
+  rpc Update(User) returns (User);
+  rpc Get(GetUserReqById) returns (User);
+  rpc ListUsers(ListUsersReq) returns (ListUsersResp);
+  rpc Delete(DeleteUserReq) returns (google.protobuf.Empty);
+  rpc CheckField(CheckFieldUserReq) returns (CheckFieldUserResp);
+  rpc IfExists(IfUserExistsReq) returns (IfUserExistsResp);
   rpc ChangePassword(ChangeUserPasswordReq) returns (ChangeUserPasswordResp);
-  rpc UpdateRefreshToken(UpdateRefreshTokenReq) returns (UpdateRefreshTokenResp);
+  rpc UpdateRefreshToken(UpdateRefreshTokenUserReq) returns (UpdateRefreshTokenUserResp);
 }
+
 
 message User {
   string id = 1;
@@ -31,12 +32,12 @@ message User {
   string deleted_at = 12;
 }
 
-message CheckFieldReq {
+message CheckFieldUserReq {
   string value = 1;
   string field = 2;
 }
 
-message CheckFieldResp {
+message CheckFieldUserResp {
   bool status = 1;
 }
 
@@ -68,11 +69,11 @@ message ListUsersResp {
   uint64 count = 2;
 }
 
-message IfExistsReq {
+message IfUserExistsReq {
   string phone_number = 1;
 }
 
-message IfExistsResp {
+message IfUserExistsResp {
   bool is_exists = 1;
 }
 
@@ -80,11 +81,11 @@ message Empty {
   
 }
 
-message UpdateRefreshTokenReq {
-  string user_id = 1;
+message UpdateRefreshTokenUserReq {
+  string id = 1;
   string refresh_token = 2;
 }
 
-message UpdateRefreshTokenResp {
+message UpdateRefreshTokenUserResp {
   bool status = 1;
 }

@@ -16,6 +16,27 @@ type User struct {
 	UpdatedAt    time.Time
 }
 
+type Admin struct {
+	Id            string
+	AdminOrder    string
+	Role          string
+	FirstName     string
+	LastName      string
+	BirthDate     string
+	PhoneNumber   string
+	Email         string
+	Password      string
+	Gender        string
+	Salary        string
+	Biography     string
+	StartWorkYear string
+	EndWorkYear   string
+	WorkYears     string
+	RefreshToken  string
+	CreatedAt     time.Time
+	UpdatedAt     time.Time
+}
+
 type CheckFieldReq struct {
 	Value string
 	Field string
@@ -28,6 +49,10 @@ type CheckFieldResp struct {
 type IfExistsReq struct {
 	PhoneNumber string
 }
+type IfAdminExistsReq struct {
+	PhoneNumber string
+	Email string
+}
 
 type IfExistsResp struct {
 	IsExistsReq bool
@@ -38,12 +63,18 @@ type ChangeUserPasswordReq struct {
 	Password    string
 }
 
-type ChangeUserPasswordResp struct {
+type ChangeAdminPasswordReq struct {
+	Email       string
+	PhoneNumber string
+	Password    string
+}
+
+type ChangePasswordResp struct {
 	Status bool
 }
 
 type UpdateRefreshTokenReq struct {
-	UserId       string
+	Id       string
 	RefreshToken string
 }
 

@@ -130,7 +130,7 @@ func (s *UserReposisitoryTestSuite) TestUserCRUD() {
 
 	// check UpdateRefreshToken user method
 	req_update_refresh_token := entity.UpdateRefreshTokenReq{
-		UserId:       updUser.Id,
+		Id:       updUser.Id,
 		RefreshToken: "new_refresh_token",
 	}
 	resp_update_refresh_token, err := userRepo.UpdateRefreshToken(ctx, &req_update_refresh_token)

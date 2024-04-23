@@ -1,0 +1,98 @@
+syntax = "proto3";
+
+package user;
+
+import "google/protobuf/empty.proto";
+
+
+service AdminService {
+    rpc Create(Admin) returns (Admin);
+    rpc Update(Admin) returns (Admin);
+    rpc Get(GetAdminReqById) returns (Admin);
+    rpc ListAdmins(ListAdminsReq) returns (ListAdminsResp);
+    rpc Delete(DeleteAdminReq) returns (google.protobuf.Empty);
+    rpc CheckField(CheckAdminFieldReq) returns (CheckAdminFieldResp);
+    rpc IfExists(IfAdminExistsReq) returns (IfAdminExistsResp);
+    rpc ChangePassword(ChangeAdminPasswordReq) returns (ChangeAdminPasswordResp);
+    rpc UpdateRefreshToken(UpdateRefreshTokenAdminReq) returns (UpdateRefreshTokenAdminResp);
+  }
+  
+
+  message Admin {
+   string id = 1;
+   string admin_order = 2;
+   string role = 3;
+   string first_name = 4;
+   string last_name = 5;
+   string birth_date = 6;
+   string phone_number = 7;
+   string email = 8;
+   string password = 9;
+   string gender = 10;
+   string salary = 11;
+   string biography = 12;
+   string start_work_year = 13;
+   string end_work_year = 14;
+   string work_years = 15;
+   string refresh_token = 16;
+   string created_at = 17;
+   string updated_at = 18;
+   string deleted_at = 19;
+  }
+  
+  message IfAdminExistsReq {
+    string phone_number = 1;
+    string email = 2;
+  }
+  
+  message GetAdminReqById {
+    string admin_id = 1;
+  }
+  
+  message ListAdminsReq {
+    uint64 limit = 1;
+    uint64 offset = 2;
+    map<string, string> filter=3;
+  }
+  
+  message ListAdminsResp {
+    repeated Admin admins = 1;
+    uint64 count = 2;
+  }
+  
+  message ChangeAdminPasswordReq {
+    string phone_number = 1; 
+    string email = 2; 
+    string password = 3;
+  }
+  
+  message DeleteAdminReq {
+    string admin_id = 1;
+  }
+  
+  message ChangeAdminPasswordResp {
+    bool status = 1;
+  }
+  
+  message CheckAdminFieldReq {
+    string value = 1;
+    string field = 2;
+  }
+  
+  message CheckAdminFieldResp {
+    bool status = 1;
+  }
+  
+  message IfAdminExistsResp {
+    bool is_exists = 1;
+  }
+
+  message UpdateRefreshTokenAdminReq {
+    string id = 1;
+    string refresh_token = 2;
+  }
+  
+  message UpdateRefreshTokenAdminResp {
+    bool status = 1;
+  }
+  
