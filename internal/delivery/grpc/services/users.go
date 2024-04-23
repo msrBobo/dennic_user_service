@@ -2,7 +2,7 @@ package services
 
 import (
 	"context"
-	pb "dennic_user_service/genproto/user-service"
+	pb "dennic_user_service/genproto/user_service"
 	"dennic_user_service/internal/entity"
 	"dennic_user_service/internal/usecase"
 	"dennic_user_service/internal/usecase/event"

@@ -1,10 +1,10 @@
 #!/bin/bash
 CURRENT_DIR=$(pwd)
 
-for module in $(find $CURRENT_DIR/project-protos/* -type d); do
+for module in $(find $CURRENT_DIR/dennic-protos/* -type d); do
     protoc -I /usr/local/include \
            -I $GOPATH/pkg/mod/github.com/gogo/protobuf@v1.3.2 \
-           -I $CURRENT_DIR/project-protos/ \
+           -I $CURRENT_DIR/dennic-protos/ \
             --gofast_out=plugins=grpc:$CURRENT_DIR/genproto/ \
             $module/*.proto;
 done;

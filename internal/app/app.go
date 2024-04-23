@@ -1,7 +1,7 @@
 package app
 
 import (
-	pb "dennic_user_service/genproto/user-service"
+	pb "dennic_user_service/genproto/user_service"
 	grpc_server "dennic_user_service/internal/delivery/grpc/server"
 	invest_grpc "dennic_user_service/internal/delivery/grpc/services"
 	"dennic_user_service/internal/infrastructure/grpc_service_clients"
