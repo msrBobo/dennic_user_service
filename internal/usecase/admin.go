@@ -21,7 +21,7 @@ type AdminStorageI interface {
 	Delete(ctx context.Context, id string) error
 	CheckField(ctx context.Context, req *entity.CheckFieldReq) (*entity.CheckFieldResp, error)
 	IfExists(ctx context.Context, req *entity.IfAdminExistsReq) (*entity.IfExistsResp, error)
-	ChangePassword(ctx context.Context, req *entity.ChangeAdminPasswordReq) (*entity.ChangePasswordResp, error)
+	ChangePassword(ctx context.Context, req *entity.ChangeAdminPasswordReq) (*entity.ChangeAdminPasswordResp, error)
 	UpdateRefreshToken(ctx context.Context, req *entity.UpdateRefreshTokenReq) (*entity.UpdateRefreshTokenResp, error)
 }
 
@@ -98,7 +98,7 @@ func (a adminService) CheckField(ctx context.Context, req *entity.CheckFieldReq)
 	return a.repo.CheckField(ctx, req)
 }
 
-func (a adminService) IfExists(ctx context.Context, req *entity.IfExistsReq) (*entity.IfExistsResp, error) {
+func (a adminService) IfExists(ctx context.Context, req *entity.IfAdminExistsReq) (*entity.IfExistsResp, error) {
 	ctx, cancel := context.WithTimeout(ctx, a.ctxTimeout)
 	defer cancel()
 
@@ -108,7 +108,7 @@ func (a adminService) IfExists(ctx context.Context, req *entity.IfExistsReq) (*e
 	return a.repo.IfExists(ctx, req)
 }
 
-func (a adminService) ChangePassword(ctx context.Context, req *entity.ChangeUserPasswordReq) (*entity.ChangePasswordResp, error) {
+func (a adminService) ChangePassword(ctx context.Context, req *entity.ChangeAdminPasswordReq) (*entity.ChangeAdminPasswordResp, error) {
 	ctx, cancel := context.WithTimeout(ctx, a.ctxTimeout)
 	defer cancel()
 

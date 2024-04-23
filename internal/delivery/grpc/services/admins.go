@@ -173,6 +173,7 @@ func (a adminRPC) Update(ctx context.Context, admin *pb.Admin) (*pb.Admin, error
 		EndWorkYear:   admin.EndWorkYear,
 		WorkYears:     admin.WorkYears,
 		RefreshToken:  admin.RefreshToken,
+		UpdatedAt:     time.Now(),
 	}
 
 	err := a.admin.Update(ctx, &req)

@@ -12,7 +12,7 @@ type AdminStorageI interface {
 	Update(ctx context.Context, kyc *entity.Admin) error
 	Delete(ctx context.Context, id string) error
 	CheckField(ctx context.Context, req *entity.CheckFieldReq) (*entity.CheckFieldResp, error)
-	IfExists(ctx context.Context, req *entity.IfExistsReq) (*entity.IfExistsResp, error)
-	ChangePassword(ctx context.Context, req *entity.ChangeUserPasswordReq) (*entity.ChangePasswordResp, error)
+	IfExists(ctx context.Context, req *entity.IfAdminExistsReq) (*entity.IfExistsResp, error)
+	ChangePassword(ctx context.Context, req *entity.ChangeAdminPasswordReq) (*entity.ChangeAdminPasswordResp, error)
 	UpdateRefreshToken(ctx context.Context, req *entity.UpdateRefreshTokenReq) (*entity.UpdateRefreshTokenResp, error)
 }

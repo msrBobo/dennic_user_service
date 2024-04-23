@@ -6,7 +6,8 @@ import (
 	invest_grpc "dennic_user_service/internal/delivery/grpc/services"
 	"dennic_user_service/internal/infrastructure/grpc_service_clients"
 	"dennic_user_service/internal/infrastructure/kafka"
-	repo "dennic_user_service/internal/infrastructure/repository/postgresql"
+	adminRepo "dennic_user_service/internal/infrastructure/repository/postgresql/admin"
+	userRepo "dennic_user_service/internal/infrastructure/repository/postgresql/user"
 	"dennic_user_service/internal/pkg/config"
 	"dennic_user_service/internal/pkg/logger"
 	"dennic_user_service/internal/pkg/otlp"
@@ -106,16 +107,20 @@ func (a *App) Run() error {
 	a.ServiceClients = serviceClients
 
 	// repositories initialization
-	userRepo := repo.NewUserRepo(a.DB)
+	userRepo := userRepo.NewUserRepo(a.DB)
+	adminRepo := adminRepo.NewAdminRepo(a.DB)
 
 	// usecase initialization
 	userUsecase := usecase.NewUserService(contextTimeout, userRepo)
+	adminUsecase := usecase.NewAdminService(contextTimeout, adminRepo)
 
-	pb.RegisterUserServiceServer(a.GrpcServer, invest_grpc.NewRPC(a.Logger, userUsecase, a.BrokerProducer))
+	pb.RegisterUserServiceServer(a.GrpcServer, invest_grpc.NewUserRPC(a.Logger, userUsecase, a.BrokerProducer))
+	pb.RegisterAdminServiceServer(a.GrpcServer, invest_grpc.NewAdminRPC(a.Logger, adminUsecase, a.BrokerProducer))
 	a.Logger.Info("gRPC Server Listening", zap.String("url", a.Config.RPCPort))
 	if err := grpc_server.Run(a.Config, a.GrpcServer); err != nil {
 		return fmt.Errorf("gRPC fatal to serve grpc server over %s %w", a.Config.RPCPort, err)
 	}
+
 	return nil
 }
 

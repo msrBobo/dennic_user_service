@@ -18,7 +18,7 @@ type User struct {
 
 type Admin struct {
 	Id            string
-	AdminOrder    string
+	AdminOrder    int64
 	Role          string
 	FirstName     string
 	LastName      string
@@ -27,11 +27,11 @@ type Admin struct {
 	Email         string
 	Password      string
 	Gender        string
-	Salary        string
+	Salary        float32
 	Biography     string
 	StartWorkYear string
 	EndWorkYear   string
-	WorkYears     string
+	WorkYears     uint64
 	RefreshToken  string
 	CreatedAt     time.Time
 	UpdatedAt     time.Time
@@ -51,7 +51,7 @@ type IfExistsReq struct {
 }
 type IfAdminExistsReq struct {
 	PhoneNumber string
-	Email string
+	Email       string
 }
 
 type IfExistsResp struct {
@@ -73,8 +73,12 @@ type ChangePasswordResp struct {
 	Status bool
 }
 
+type ChangeAdminPasswordResp struct {
+	Status bool
+}
+
 type UpdateRefreshTokenReq struct {
-	Id       string
+	Id           string
 	RefreshToken string
 }
 

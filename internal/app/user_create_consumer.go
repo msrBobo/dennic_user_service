@@ -3,7 +3,7 @@ package app
 import (
 	"dennic_user_service/internal/delivery/grpc/kafka/handlers"
 	"dennic_user_service/internal/infrastructure/kafka"
-	"dennic_user_service/internal/infrastructure/repository/postgresql"
+	"dennic_user_service/internal/infrastructure/repository/postgresql/user"
 	"dennic_user_service/internal/pkg/config"
 	logPkg "dennic_user_service/internal/pkg/logger"
 	"dennic_user_service/internal/pkg/postgres"

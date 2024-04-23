@@ -18,7 +18,7 @@ type userRPC struct {
 	brokerProducer event.BrokerProducer
 }
 
-func NewRPC(logger *zap.Logger, user usecase.UserStorageI,
+func NewUserRPC(logger *zap.Logger, user usecase.UserStorageI,
 	brokerProducer event.BrokerProducer) pb.UserServiceServer {
 	return &userRPC{
 		logger:         logger,
